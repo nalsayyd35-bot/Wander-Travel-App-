@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanderlust | اكتشف العالم معنا</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="#" class="logo">
+      <span class="logo-icon">🌍</span>
+      <span>واندرلاست <span>.Wander</span></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#hero" class="active">الرئيسية</a>
+      <a href="#destinations">الوجهات</a>
+      <a href="#why-us">لماذا نحن</a>
+    </nav>
+    <a href="#destinations" class="btn btn-primary">استكشف الرحلات ✈️</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="badge">عالم من المغامرات بانتظارك</span>
+      <h1>سافر إلى أقصى طموحاتك، <br><em>واصنع ذكريات لا تُنسى.</em></h1>
+      <p>نخطط لك أجمل الرحلات والأنشطة السياحية مع أفضل المرشدين حول العالم بأفضل الأسعار.</p>
+      
+      <!-- Quick Search Bar -->
+      <div class="search-box">
+        <div class="search-item">
+          <label>الوجهة</label>
+          <input type="text" id="searchDest" placeholder="إلى أين تريد السفر؟">
+        </div>
+        <div class="search-item">
+          <label>نوع الرحلة</label>
+          <select id="searchCategory">
+            <option value="all">كل الأنواع</option>
+            <option value="beach">شواطئ وجزر</option>
+            <option value="mountain">جبال وطبيعة</option>
+            <option value="cultural">مدن وتاريخ</option>
+          </select>
+        </div>
+        <button class="btn btn-accent" id="searchBtn">بحث 🔍</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Destinations Section -->
+  <section class="destinations" id="destinations">
+    <div class="section-header">
+      <span class="sub-title">وجهات مميزة</span>
+      <h2>اختر مغامرتك القادمة</h2>
+    </div>
+
+    <!-- Category Filters -->
+    <div class="filter-tabs">
+      <button class="tab-btn active" data-filter="all">جميع الوجهات</button>
+      <button class="tab-btn" data-filter="beach">شواطئ وجزر 🏖️</button>
+      <button class="tab-btn" data-filter="mountain">جبال وطبيعة 🏔️</button>
+      <button class="tab-btn" data-filter="cultural">تاريخ وثقافة 🏛️</button>
+    </div>
+
+    <div class="grid" id="destGrid"></div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-us" id="why-us">
+    <div class="why-container">
+      <div class="why-info">
+        <span class="sub-title">رحلات بدون قلق</span>
+        <h2>لماذا يختار المسافرون واندرلاست؟</h2>
+        <div class="feature-item">
+          <div class="icon">🛡️</div>
+          <div>
+            <h4>تأمين سفر شامل</h4>
+            <p>جميع رحلاتنا مغطاة بتأمين شامل للحالات الطارئة والإلغاء.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="icon">🧭</div>
+          <div>
+            <h4>مرشدون محليون محترفون</h4>
+            <p>نخبة من المرشدين للتعرف على أسرار كل دولة وسكانها.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="icon">💳</div>
+          <div>
+            <h4>أسعار مريحة وحجز مرن</h4>
+            <p>إمكانية إلغاء الحجز أو تعديل المواعيد حتى 48 ساعة قبل الرحلة.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-image">
+        <img src="images/travel-hero.jpg" alt="سفر ومغامرة">
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="bookModal">
+    <div class="modal-card">
+      <button class="close-btn" id="closeModal">&times;</button>
+      <h3 id="modalDestName">حجز الرحلة</h3>
+      <p id="modalBasePrice" class="base-price">0 $ / للشخص</p>
+
+      <form id="bookingForm" class="modal-form">
+        <div class="form-group">
+          <label>عدد المسافرين:</label>
+          <input type="number" id="numPeople" min="1" value="1" required>
+        </div>
+        <div class="form-group">
+          <label>عدد الأيام:</label>
+          <input type="number" id="numDays" min="1" value="5" required>
+        </div>
+        <div class="form-group">
+          <label>إضافات متقدمة:</label>
+          <div class="checkboxes">
+            <label><input type="checkbox" id="addFlight"> شامل تذاكر الطيران (+250$ / للشخص)</label>
+            <label><input type="checkbox" id="addGuide"> مرشد سياحي خاص (+80$ / لليوم)</label>
+          </div>
+        </div>
+
+        <div class="total-calc">
+          <span>الإجمالي المتوقع:</span>
+          <strong id="calcTotal">0 $</strong>
+        </div>
+
+        <button type="submit" class="btn btn-accent btn-block">تأكيد الحجز المبدئي ✨</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 واندرلاست للسياحة والرحلات. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
